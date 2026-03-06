@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>clollab</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div id="sidebar">
+    <div id="sidebar-header">
+      <span class="logo">clollab</span>
+      <button id="new-file-btn" title="New file">+</button>
+    </div>
+    <div id="file-tree"></div>
+  </div>
+
+  <main id="main">
+    <div id="content-area">
+      <div id="doc"></div>
+    </div>
+  </main>
+
+  <!-- Persistent Claude chat panel -->
+  <div id="claude-chat">
+    <div id="chat-header">
+      <span class="chat-title">Claude</span>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-footer">
+      <div id="chat-selection" class="hidden"></div>
+      <div id="chat-input-row">
+        <textarea id="chat-input" placeholder="Select text with ⇧ drag…" rows="2"></textarea>
+        <button id="chat-send">↑</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- New file dialog -->
+  <div id="new-file-overlay" class="hidden">
+    <div id="new-file-dialog">
+      <div id="new-file-title">New file</div>
+      <input id="new-file-input" type="text" placeholder="path/to/file.md" spellcheck="false" />
+      <div class="new-file-actions">
+        <button id="new-file-cancel">Cancel</button>
+        <button id="new-file-submit">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status banner -->
+  <div id="status-bar" class="hidden">
+    <span id="status-text"></span>
+  </div>
+
+  <!-- Comet cursor -->
+  <div id="cursor-head"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

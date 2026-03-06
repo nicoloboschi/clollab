@@ -1,0 +1,19 @@
+{
+  "name": "clollab",
+  "version": "0.1.0",
+  "description": "In-browser markdown editor powered by Claude Code",
+  "bin": {
+    "clollab": "./src/index.ts"
+  },
+  "files": ["src/", "public/"],
+  "scripts": {
+    "test": "~/.bun/bin/bun test src/tests/claude.test.ts",
+    "test:e2e": "~/.bun/bin/bunx playwright test"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "latest"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}
