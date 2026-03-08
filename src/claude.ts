@@ -51,11 +51,21 @@ export async function applyComment(
 
   const prompt = buildPrompt(filePath, selectedText, comment);
 
+  // Build a clean environment: strip Claude Code session markers so the SDK
+  // subprocess is never treated as a nested Claude Code instance.
+  const env: Record<string, string> = {};
+  for (const [k, v] of Object.entries(process.env)) {
+    if (v !== undefined) env[k] = v;
+  }
+  delete env.CLAUDECODE;
+  delete env.CLAUDE_CODE_ENTRYPOINT;
+
   try {
     for await (const message of query({
       prompt,
       options: {
         cwd,
+        env,
         allowedTools: ["Read", "Edit", "Write"],
         permissionMode: "acceptEdits",
         hooks: {

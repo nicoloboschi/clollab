@@ -23,10 +23,9 @@ ws.onmessage = (e) => {
 
   if (msg.type === "done") {
     isProcessing = false;
-    if (currentClaudeMsg) {
-      appendToClaudeMsg(currentClaudeMsg, { kind: "done" });
-      currentClaudeMsg = null;
-    }
+    if (!currentClaudeMsg) currentClaudeMsg = addClaudeMessage();
+    appendToClaudeMsg(currentClaudeMsg, { kind: "done" });
+    currentClaudeMsg = null;
     if (currentFile) loadFile(currentFile, false);
   }
 
